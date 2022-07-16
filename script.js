@@ -20,3 +20,16 @@ while (i<9){
     i+=3
     container.appendChild(line)
 }
+
+let test=document.querySelector(".square")
+console.log(test)
+let cross=document.createElement("div")
+cross.classList.add("cross")
+cross.textContent="X"
+test.appendChild(cross)
+
+let test1=document.querySelectorAll(".square")[1]
+let circle=document.createElement("div")
+circle.classList.add("circle")
+circle.textContent="O"
+test1.appendChild(circle)

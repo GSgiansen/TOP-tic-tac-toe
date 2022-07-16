@@ -61,5 +61,17 @@ header{
     width: 250px;
     background-color:white;
     border:10px solid rgb(158, 158, 158);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.cross{
+    color: red;
+    font-size: 160px;
+}
+
+.circle{
+    color: blue;
+    font-size: 160px;
+}
