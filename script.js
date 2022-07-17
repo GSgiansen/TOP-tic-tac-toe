@@ -1,7 +1,7 @@
 
 
 const GameBoard={
-    gameboard:["X","O","X","X","","","","",""],
+    gameboard:["","","","","","","","",""],
 
 }
 
@@ -23,7 +23,7 @@ cross.classList.add("cross")
 cross.textContent="X"
 return cross
 }
-function validmoveC(event){
+function playerMove(event){
     if (!event.target.id){//encountered a big where clicking in the middle of O registers the O and not the sqyare
         console.log("clown")
         return
@@ -36,6 +36,7 @@ function validmoveC(event){
         c=genCircle();
         selectedSquare.appendChild(c);
         addToArray(index,"O")
+        AImove();
         
     }
     
@@ -52,7 +53,7 @@ while (i<9){
     for (j=i;j<k;j++){
         let square=document.createElement("div")
         square.classList.add("square")
-        square.addEventListener("click",event =>{validmoveC(event)})
+        square.addEventListener("click",event =>{playerMove(event)})
         line.appendChild(square)
         square.id=j
     }
@@ -86,9 +87,30 @@ for (index in GameBoard.gameboard){
 
 function addToArray(index,typeOfInput){//type of input can be cross or circle
     GameBoard.gameboard[index]=typeOfInput
-    console.log(GameBoard.gameboard)
 
 }
 
 //to work on is the AI logic to find a suitable move to put cross
+function AImove(){
+    //scan array for empty 
+    let emptySq=[]
+    g=GameBoard.gameboard
+    for (index in GameBoard.gameboard){
+        if (!g[index]) {
+            emptySq.push(index)
+        }
+    }
+    if (emptySq.length==0) {
+        console.log("squares filled")
+        return
 
+    }
+    let randomindex=Math.floor(Math.random()*emptySq.length)
+    addToArray(emptySq[randomindex],"X")
+    console.log(emptySq[randomindex])
+
+
+    let selectedSquare=document.getElementById(emptySq[randomindex])
+    selectedSquare.appendChild(genCross())
+    
+}
