@@ -132,7 +132,6 @@ function AImove(){
 function checkWinner(arr){
     //diff between at least 3 squares must be constant
     if (arr.length<3) return false;
-    console.log(arr)
     for (let i=0;i<arr.length;i++){
 
         let newarr=arr.slice(0,i).concat(arr.slice(i+1))
@@ -194,6 +193,13 @@ function displayGameOver(winner){
     let d= document.getElementById("display")
     d.textContent=winner+" has Won!"
     d.style.display="flex"
+    let butt=document.createElement("div")
+    butt.classList.add("smalltext")
+    butt.textContent="Play Again ?"
+    butt.addEventListener("click",function(){
+        document.location.reload(true)})
+    d.appendChild(butt)
+
     
 }
 

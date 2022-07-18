@@ -3,7 +3,9 @@
 *{
     font-family: 'Raleway', sans-serif;;
 }
-
+body {
+    margin: 0;
+  }
 header{
     font-size: 64px;
     display: grid;
@@ -85,12 +87,22 @@ header{
     position:fixed ;
     display: none;
     top: 30vh;
-    width: 100vw;
-    height: min(40vh);
+    width: calc(100vw + 10px);
+    height: calc(40vh - 12px);
     font-size: 126px;
-    background-color: rgba(0,0,0,0.8);
-
+    background-color: rgba(0,0,0,0.95);
+    color: white;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 
+}
+
+#clickPvsC{
+    margin-right:16px
+}
+
+.smalltext{
+    color: white;
+    font-size: 16px;
 }
