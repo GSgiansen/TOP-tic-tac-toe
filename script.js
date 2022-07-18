@@ -132,14 +132,33 @@ function AImove(){
 function checkWinner(arr){
     //diff between at least 3 squares must be constant
     if (arr.length<3) return false;
-    let dict =new Object()
-    let numiterations=arr.length-2
-    for (let i=0;i<numiterations;i++){
-        console.log(arr[i],arr[i+1],arr[i+2])
-        if (Math.abs(arr[i]-arr[i+1])==Math.abs(arr[i+1]-arr[i+2])){
-            console.log("winner")
-            return true
+    console.log(arr)
+    for (let i=0;i<arr.length;i++){
+
+        let newarr=arr.slice(0,i).concat(arr.slice(i+1))
+        
+        for (let j=0;j<newarr.length-1;j++){
+            let newestarr=[arr[i],newarr[j],newarr[j+1]].sort()
+            if (Math.abs(newestarr[0]-newestarr[1])==Math.abs(newestarr[1]-newestarr[2])){
+                if (Math.abs(newestarr[0]-newestarr[1])%2==0 &&((newestarr[0]==0 && newestarr[2]==8) || (newestarr[0]==2 && newestarr[2]==6))){//calc even 
+                    return true
+                }
+                else if(Math.abs(newestarr[0]-newestarr[1])==Math.abs(newestarr[1]-newestarr[2]) && Math.abs(newestarr[0]-newestarr[1])!=1){
+                    if (Math.abs(newestarr[0]-newestarr[1])%2==1) return true
+                }
+
+                else if (Math.abs(newestarr[0]-newestarr[1])==Math.abs(newestarr[0]-newestarr[1]) &&Math.abs(newestarr[0]-newestarr[1])==1){
+                    if (newestarr[0]==0 || newestarr[0]==3 || newestarr[0]==6){
+                        return true
+                    }
+                }
+
+            }
+
+
         }
+
+
     }
 
     return false
@@ -154,7 +173,6 @@ function getCross(){
             arr.push(index)
         }
     }
-    console.log(arr)
     return arr
 
 }
@@ -167,7 +185,6 @@ function getCircle(){
             arr.push(index)
         }
     }
-    console.log(arr)
     return arr
 
 }
@@ -175,8 +192,13 @@ function getCircle(){
 function displayGameOver(winner){
     GameBoard.gameover=true
     let d= document.getElementById("display")
-    console.log(d)
     d.textContent=winner+" has Won!"
     d.style.display="flex"
     
 }
+
+let resetbutton= document.getElementById("clickPvsC")
+
+resetbutton.addEventListener("click",function(){
+    document.location.reload(true)
+})
