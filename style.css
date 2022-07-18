@@ -10,6 +10,11 @@ header{
     align-items: center;
     justify-content: center;
 }
+
+#playerOrComputer{
+    display: flex;
+    justify-content: end;
+}
 #container{
     margin-top:16px;
     display: flex;
@@ -74,4 +79,18 @@ header{
 .circle{
     color: blue;
     font-size: 160px;
+}
+
+#display{
+    position:fixed ;
+    display: none;
+    top: 30vh;
+    width: 100vw;
+    height: min(40vh);
+    font-size: 126px;
+    background-color: rgba(0,0,0,0.8);
+
+    justify-content: center;
+    align-items: center;
+
 }
