@@ -80,6 +80,19 @@ function playerMove(event){
         console.log("clown")
         return
     }
+
+    let emptySq=[]
+    g=GameBoard.gameboard
+    for (index in GameBoard.gameboard){
+        if (!g[index]) {
+            emptySq.push(index)
+        }
+    }
+    if (emptySq.length==0) {
+        allsquaresFilled()
+        return
+
+    }
     index=event.target.id
     let selectedSquare=document.getElementById(index)
 
@@ -112,7 +125,7 @@ function AImove(){
         }
     }
     if (emptySq.length==0) {
-        console.log("squares filled")
+        allsquaresFilled()
         return
 
     }
@@ -203,6 +216,20 @@ function displayGameOver(winner){
     
 }
 
+function allsquaresFilled(){
+    let d= document.getElementById("displayfull")
+    d.textContent="No one Wins :("
+    d.style.display="flex"
+    let butt=document.createElement("div")
+    butt.classList.add("smalltext")
+    butt.textContent="Play Again ?"
+    butt.addEventListener("click",function(){
+        document.location.reload(true)})
+    d.appendChild(butt)
+
+
+
+}
 let resetbutton= document.getElementById("clickPvsC")
 
 resetbutton.addEventListener("click",function(){
